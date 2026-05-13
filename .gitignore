@@ -1,0 +1,13 @@
+# Build artifacts
+fnix
+fnix.elf
+fnix.img
+*.o
+*.iso
+
+# Temporary files
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
