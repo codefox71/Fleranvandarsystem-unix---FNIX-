@@ -39,7 +39,7 @@ Copy fnix.img to SD card as kernel.img, along with bootcode.bin, etc.
 ## Supported Hardware
 - x86 PCs (via GRUB)
 - Raspberry Pi 400 (ARM)
-- Luckfox Lyra RK3506G2 (ARM Cortex-A7)
+- Luckfox Lyra RK3506G2 (ARM Cortex-A7) Kinda works (have not tested fully)
 
 ## Running
 For x86: Boot from ISO or `qemu-system-i386 -kernel fnix.elf`
