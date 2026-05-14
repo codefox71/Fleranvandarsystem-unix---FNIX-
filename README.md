@@ -3,7 +3,7 @@ a unix like os called F-NIX or "Fleranvändarsystem - uNIX" meaning "multi-user 
 
 ## Features
 - Written in C
-- Multi-user system with root user (default password: root@123)
+- Multi-user system with root user (default password: aroot)
 - Built-in commands: help, cc (placeholder), mkusr (add user)
 - Architecture support: x86 and ARM (placeholders)
 - Shell interface
@@ -12,7 +12,9 @@ a unix like os called F-NIX or "Fleranvändarsystem - uNIX" meaning "multi-user 
 To build FNIX kernel:
 ```
 make ARCH=x86  # Creates fnix.elf for x86
+make ARCH=X86  # also works
 make ARCH=arm  # Creates fnix.elf and fnix.img for ARM (requires arm-linux-gnueabihf-* tools)
+make ARCH=ARM  # also works
 ```
 
 ## Creating Bootable Images
@@ -45,3 +47,19 @@ Copy fnix.img to SD card as kernel.img, along with bootcode.bin, etc.
 For x86: Boot from ISO or `qemu-system-i386 -kernel fnix.elf`
 Or use the provided script: `./run_fnix.sh` (requires Homebrew and QEMU)
 For ARM: Boot on RPi with kernel.img 
+## New Shell Commands
+- `help` — list available commands
+- `clear` — clear the screen
+- `version` — show kernel version
+- `whoami` — show current user
+- `id` — show uid and gid
+- `users` — list local users
+- `mkusr` — add a new user (root only)
+- `su <username>` — switch to another user
+- `sudo <command>` — run a command as root
+- `passwd` — change current password
+- `logout` — logout to login prompt
+- `exit` — exit the shell
+
+## User and sudo
+The system creates the default root account automatically. Use `root` with password `aroot` to log in, then use `mkusr` or `sudo mkusr` to add users.

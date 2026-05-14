@@ -12,6 +12,13 @@ int input_pos = 0;
 void kprint(const char *str);
 
 void init_kernel() {
+    // Default root user
+    strcpy(users[0].username, "root");
+    strcpy(users[0].password, "aroot");
+    users[0].uid = 0;
+    users[0].gid = 0;
+    num_users = 1;
+
     init_scheduler();
     init_graphics();
     init_vfs();

@@ -7,8 +7,9 @@ LD_ARM = arm-linux-gnueabihf-ld
 OBJCOPY_ARM = arm-linux-gnueabihf-objcopy
 
 ARCH ?= x86
+ARCH_LC := $(shell printf "%s" "$(ARCH)" | tr '[:upper:]' '[:lower:]')
 
-ifeq ($(ARCH),arm)
+ifeq ($(ARCH_LC),arm)
 CC = $(CC_ARM)
 AS = $(AS_ARM)
 LD = $(LD_ARM)
@@ -27,7 +28,7 @@ endif
 
 # Source files
 KERNEL_SRC = kernel/main.c kernel/init.c kernel/syscall.c kernel/graphics.c kernel/elf.c kernel/scheduler.c kernel/vfs.c
-ARCH_SRC = arch/$(ARCH)/boot.c arch/$(ARCH)/interrupts.c arch/$(ARCH)/idt.c
+ARCH_SRC = arch/$(ARCH_LC)/boot.c arch/$(ARCH_LC)/interrupts.c arch/$(ARCH_LC)/idt.c
 SHELL_SRC = shell/shell.c shell/commands.c
 LIB_SRC = lib/string.c
 
@@ -44,7 +45,7 @@ all: fnix.elf
 fnix.elf: $(BOOT_OBJ) $(KERNEL_OBJ) $(ARCH_OBJ) $(SHELL_OBJ) $(LIB_OBJ)
 	$(LD) $(LDFLAGS) -o $@ $^
 
-ifeq ($(ARCH),arm)
+ifeq ($(ARCH_LC),arm)
 fnix.img: fnix.elf
 	$(OBJCOPY) -O binary $< $@
 endif

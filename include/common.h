@@ -41,6 +41,7 @@ extern int input_pos;
 void kernel_main();
 void init_kernel();
 void shell_main();
+void clear_screen();
 
 // String functions
 void strcpy(char *dest, const char *src);
